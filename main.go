@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"sort"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -32,7 +33,7 @@ func run(args []string) error {
 		return err
 	}
 
-	exts := strings.Split(strings.TrimSpace(string(stdout)), "\n")
+	exts := sort.StringSlice(strings.Split(strings.TrimSpace(string(stdout)), "\n"))
 	for _, ext := range exts {
 		id, current, _ := strings.Cut(ext, "@")
 		publisher, name, _ := strings.Cut(id, ".")
