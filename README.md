@@ -5,7 +5,9 @@ Keep your Visual Studio Code extensions up-to-date!
 ## Usage
 
 ```shell
-$ visceral
+$ visceral > extensions.nix
+$ cat extensions.nix
+...
 {
   # rust-analyzer
   publisher = "rust-lang";
@@ -13,4 +15,5 @@ $ visceral
   version = "0.4.1199"; # From "0.4.1185"
   sha256 = "";
 }
+...
 ```
