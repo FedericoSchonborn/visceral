@@ -24,8 +24,10 @@
           gopls
           delve
           golangci-lint
+          gomodifytags
         ];
       };
+
       formatter = pkgs.alejandra;
     });
 }
