@@ -21,15 +21,9 @@
     {
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
-          go_1_19
-          go-tools
-          gopls
-          delve
-          golangci-lint
-          gomodifytags
-
           rustc
           cargo
+          rustfmt
           clippy
           rust-analyzer
         ];
