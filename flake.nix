@@ -9,14 +9,16 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
-    in {
+  outputs =
+    { nixpkgs
+    , flake-utils
+    , ...
+    }:
+    flake-utils.lib.eachDefaultSystem (system:
+    let
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
           go_1_19
@@ -25,9 +27,14 @@
           delve
           golangci-lint
           gomodifytags
+
+          rustc
+          cargo
+          clippy
+          rust-analyzer
         ];
       };
 
-      formatter = pkgs.alejandra;
+      formatter = pkgs.nixpkgs-fmt;
     });
 }
